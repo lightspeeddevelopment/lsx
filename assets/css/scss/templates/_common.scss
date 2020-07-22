@@ -21,7 +21,9 @@
 	}
 }
 .archive-header-wrapper {
-	.lsx.page-has-banner:not(.single-post) & { display: none; }
+	.lsx.page-has-banner:not(.single-post) & {
+		display: none;
+	}
 
 	.lsx.single-post & {
 		float: none;
@@ -38,21 +40,31 @@
 			padding: 10px 9999rem;
 			text-align: center;
 
-			@include media('>=phone') { padding: 100px 9999rem 50px; }
-			@include media('<=tablet') { padding: 50px 9999rem 50px;     margin-top: 50px; }
+			@include media(">=phone") {
+				padding: 100px 9999rem 50px;
+			}
+			@include media("<=tablet") {
+				padding: 50px 9999rem 50px;
+				margin-top: 50px;
+			}
 
 			& > p {
-				color: #FFF;
+				color: #fff;
 				margin: $lsx-gap 0 0;
 			}
 
 			.archive-title,
 			& > p {
-				@include media('>=tablet') { max-width: 70%; }
+				@include media(">=tablet") {
+					max-width: 70%;
+				}
 			}
 		}
 
-		.archive-title { margin: 0; }
+		.archive-title {
+			margin: 0;
+			font-size: 60px;
+		}
 	}
 }
 
@@ -72,21 +84,22 @@
 }
 .banner-global {
 	+ .content-area {
-		@include media('<=tablet') {
+		@include media("<=tablet") {
 			margin-top: $lsx-large-gap * 2;
 		}
 	}
 }
 .single-product {
-	.content >.content-area {
+	.content > .content-area {
 		margin-top: $lsx-large-gap + $lsx-gap;
-		@include media('<=tablet') {
+		@include media("<=tablet") {
 			margin-top: $lsx-large-gap * 2;
 		}
 	}
 }
 
-.single-post:not(.using-gutenberg), .archive {
+.single-post:not(.using-gutenberg),
+.archive {
 	.content-area,
 	.widget-area {
 		margin-top: $lsx-medium-gap;
@@ -131,14 +144,20 @@
 	}
 }
 
-.content-area { z-index: 4; }
-.widget-area { z-index: 5; }
+.content-area {
+	z-index: 4;
+}
+.widget-area {
+	z-index: 5;
+}
 
 article.page,
 article.post,
 article.lsx-slot {
 	.entry-content {
-		.wp-audio-shortcode { margin-bottom: $lsx-gap; }
+		.wp-audio-shortcode {
+			margin-bottom: $lsx-gap;
+		}
 
 		.wp-caption {
 			margin-bottom: $lsx-gap;
@@ -148,7 +167,7 @@ article.lsx-slot {
 				font-style: italic;
 				font-weight: 700;
 				margin-top: 5px;
-				font-family: 'Noto Sans Bold',sans-serif;
+				font-family: "Noto Sans Bold", sans-serif;
 			}
 		}
 
@@ -180,7 +199,7 @@ article.lsx-slot {
 			}
 
 			&.alignnone {
-				@include media('>=tablet') {
+				@include media(">=tablet") {
 					margin-left: -10rem;
 					margin-right: -10rem;
 					max-width: calc(100% + 20rem);
@@ -189,7 +208,7 @@ article.lsx-slot {
 		}
 
 		.sticky {
-			padding:5px;
+			padding: 5px;
 		}
 	}
 
@@ -208,23 +227,37 @@ article.lsx-slot {
 }
 
 .widget-area {
-	h1, h2, h3, h4, h5, h6, .widget-title { text-align: center; }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.widget-title {
+		text-align: center;
+	}
 
 	& > .widget {
-		& + .widget { margin-top: $lsx-large-gap / 2; }
+		& + .widget {
+			margin-top: $lsx-large-gap / 2;
+		}
 
 		.textwidget {
 			& > p {
 				margin-bottom: 0;
 
-				& + p { margin-top: $lsx-gap; }
+				& + p {
+					margin-top: $lsx-gap;
+				}
 			}
 		}
 
 		&.widget_rss {
 			& > .widget-title {
 				& > .rsswidget {
-					&:first-child { display: none; }
+					&:first-child {
+						display: none;
+					}
 
 					&:last-child {
 						&:before {
@@ -241,18 +274,22 @@ article.lsx-slot {
 	}
 }
 
-.error-404 { text-align: center; }
+.error-404 {
+	text-align: center;
+}
 
 .no-results {
 	text-align: center;
 
 	.search.search-no-results:not(.has-sidebar) & {
-		@include media ('>=tablet') {
+		@include media(">=tablet") {
 			margin: 0 auto;
 			width: 83.33333%;
 		}
 
-		@include media ('>=desktop') { width: 66.66667%; }
+		@include media(">=desktop") {
+			width: 66.66667%;
+		}
 	}
 	.page-content {
 		p {
@@ -285,22 +322,24 @@ article.lsx-slot {
 	}
 }
 
-#facetwp-top, .facetwp-sidebar {
+#facetwp-top,
+.facetwp-sidebar {
 	background-color: #ffffff;
-	border: 1px solid #E4E4E4;
+	border: 1px solid #e4e4e4;
 }
 #facetwp-top {
 	padding: 5px;
 }
 
-.facetwp-per-page:after, .facetwp-sort:after {
-    content: '\f0d7';
-    color: #919191;
-    position: relative;
-    right: 20px;
-    font-family: FontAwesome;
-    font-size: 20px;
-    top: 3px;
+.facetwp-per-page:after,
+.facetwp-sort:after {
+	content: "\f0d7";
+	color: #919191;
+	position: relative;
+	right: 20px;
+	font-family: FontAwesome;
+	font-size: 20px;
+	top: 3px;
 }
 
 .facetwp-sidebar {
@@ -337,5 +376,5 @@ article.lsx-slot {
 }
 
 .lsx-shadow {
-	box-shadow: 1px 1px 5px rgba(155,155,155,0.7);
+	box-shadow: 1px 1px 5px rgba(155, 155, 155, 0.7);
 }

@@ -18,7 +18,9 @@
 		display: block;
 		line-height: inherit;
 		margin-top: 8px;
-
+		font-size: 60%;
+		font-family: $font-family-sans-serif;
+		color: #777777;
 		&.long-text {
 			margin-top: 16px;
 		}

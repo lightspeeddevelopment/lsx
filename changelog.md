@@ -21,6 +21,7 @@
 
 - Merged two WooCommerce panels within the customizer sidebar.
 - The WooCommerce bar will be showed if active and the screen is less than 678px.
+- Increasing all headings sizes 40%.
 
 ### Fixed
 
