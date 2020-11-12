@@ -17,10 +17,6 @@ if ( in_array( 'wordpress-seo/wp-seo.php', apply_filters( 'active_plugins', get_
 	require get_template_directory() . '/includes/yoast/class-lsx-yoast.php';
 }
 
-if ( class_exists( 'Popup_Maker' ) ) {
-	require get_template_directory() . '/includes/popup-maker/class-lsx-popup-maker.php';
-}
-
 require get_template_directory() . '/includes/config.php';
 require get_template_directory() . '/includes/deprecated.php';
 require get_template_directory() . '/includes/classes/class-lsx-theme-customizer.php';
