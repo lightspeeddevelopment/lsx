@@ -7,7 +7,7 @@
 
 var lsx = Object.create(null);
 
-(function($, window, document, undefined) {
+(function ($, window, document, undefined) {
 	"use strict";
 
 	var $document = $(document),
@@ -27,7 +27,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.add_class_browser_to_html = function() {
+	lsx.add_class_browser_to_html = function () {
 		if ("undefined" !== typeof platform) {
 			var platform_name = "chrome";
 			if (null !== platform.name) {
@@ -39,9 +39,7 @@ var lsx = Object.create(null);
 				platform_version = platform.version.toLowerCase();
 			}
 
-			$("html")
-				.addClass(platform_name)
-				.addClass(platform_version);
+			$("html").addClass(platform_name).addClass(platform_version);
 		}
 	};
 
@@ -51,7 +49,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.add_class_sidebar_to_body = function() {
+	lsx.add_class_sidebar_to_body = function () {
 		if ($("#secondary").length > 0) {
 			$("body").addClass("has-sidebar");
 		}
@@ -63,7 +61,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.add_class_bootstrap_to_table = function() {
+	lsx.add_class_bootstrap_to_table = function () {
 		var tables = $("table#wp-calendar");
 
 		if (tables.length > 0) {
@@ -78,10 +76,10 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.navbar_toggle_handler = function() {
+	lsx.navbar_toggle_handler = function () {
 		$(".navbar-toggle")
 			.parent()
-			.on("click", function() {
+			.on("click", function () {
 				var $parent = $(this);
 				$parent.toggleClass("open");
 				$("#masthead").toggleClass("masthead-open");
@@ -106,43 +104,41 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.fix_bootstrap_menus_dropdown = function() {
+	lsx.fix_bootstrap_menus_dropdown = function () {
 		$(".navbar-nav .dropdown, #top-menu .dropdown").on(
 			"show.bs.dropdown",
-			function() {
+			function () {
 				if (windowWidth < 1200) {
 					$(this)
 						.siblings(".open")
 						.removeClass("open")
 						.find("a.dropdown-toggle")
 						.attr("data-toggle", "dropdown");
-					$(this)
-						.find("a.dropdown-toggle")
-						.removeAttr("data-toggle");
+					$(this).find("a.dropdown-toggle").removeAttr("data-toggle");
 				}
 			}
 		);
 
 		if (windowWidth > 1199) {
 			$(".navbar-nav li.dropdown a, #top-menu li.dropdown a").each(
-				function() {
+				function () {
 					$(this).removeClass("dropdown-toggle");
 					$(this).removeAttr("data-toggle");
 				}
 			);
 		}
 
-		$window.resize(function() {
+		$window.resize(function () {
 			if (windowWidth > 1199) {
 				$(".navbar-nav li.dropdown a, #top-menu li.dropdown a").each(
-					function() {
+					function () {
 						$(this).removeClass("dropdown-toggle");
 						$(this).removeAttr("data-toggle");
 					}
 				);
 			} else {
 				$(".navbar-nav li.dropdown a, #top-menu li.dropdown a").each(
-					function() {
+					function () {
 						$(this).addClass("dropdown-toggle");
 						$(this).attr("data-toggle", "dropdown");
 					}
@@ -158,13 +154,9 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.replace_wc_classnames = function() {
-		$(".wc-tabs")
-			.removeClass("wc-tabs")
-			.addClass("nav-tabs");
-		$(".tabs")
-			.removeClass("tabs")
-			.addClass("nav wc-tabs");
+	lsx.replace_wc_classnames = function () {
+		$(".wc-tabs").removeClass("wc-tabs").addClass("nav-tabs");
+		$(".tabs").removeClass("tabs").addClass("nav wc-tabs");
 	};
 
 	/**
@@ -173,22 +165,14 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.fix_bootstrap_menus_dropdown_click = function() {
+	lsx.fix_bootstrap_menus_dropdown_click = function () {
 		if (windowWidth < 1200) {
 			$(
 				".navbar-nav .dropdown .dropdown > a, #top-menu .dropdown .dropdown > a"
-			).on("click", function(e) {
-				if (
-					!$(this)
-						.parent()
-						.hasClass("open")
-				) {
-					$(this)
-						.parent()
-						.addClass("open");
-					$(this)
-						.next(".dropdown-menu")
-						.dropdown("toggle");
+			).on("click", function (e) {
+				if (!$(this).parent().hasClass("open")) {
+					$(this).parent().addClass("open");
+					$(this).next(".dropdown-menu").dropdown("toggle");
 					e.stopPropagation();
 					e.preventDefault();
 				}
@@ -196,7 +180,7 @@ var lsx = Object.create(null);
 
 			$(
 				".navbar-nav .dropdown .dropdown .dropdown-menu a, #top-menu .dropdown .dropdown > a"
-			).on("click", function(e) {
+			).on("click", function (e) {
 				document.location.href = this.href;
 			});
 		}
@@ -208,11 +192,11 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.fix_lazyload_envira_gallery = function() {
+	lsx.fix_lazyload_envira_gallery = function () {
 		if ($(".lazyload, .lazyloaded").length > 0) {
 			if (typeof envira_isotopes == "object") {
-				$window.scroll(function() {
-					$(".envira-gallery-wrap").each(function() {
+				$window.scroll(function () {
+					$(".envira-gallery-wrap").each(function () {
 						var id = $(this).attr("id");
 						id = id.replace("envira-gallery-wrap-", "");
 
@@ -231,14 +215,14 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.set_main_menu_as_fixed = function() {
+	lsx.set_main_menu_as_fixed = function () {
 		var is_loaded = false;
 		if (windowWidth > 1199) {
 			if ($("body").hasClass("top-menu-fixed")) {
-				$document.on("scroll", function(e) {
+				$document.on("scroll", function (e) {
 					if (false === is_loaded) {
 						$(lsx_params.stickyMenuSelector).scrollToFixed({
-							marginTop: function() {
+							marginTop: function () {
 								var wpadminbar = $("#wpadminbar");
 
 								if (wpadminbar.length > 0) {
@@ -250,13 +234,13 @@ var lsx = Object.create(null);
 
 							minWidth: 768,
 
-							preFixed: function() {
+							preFixed: function () {
 								$(this).addClass("scrolled");
 							},
 
-							preUnfixed: function() {
+							preUnfixed: function () {
 								$(this).removeClass("scrolled");
-							}
+							},
 						});
 						is_loaded = true;
 					}
@@ -271,7 +255,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.set_cover_template_header_height = function() {
+	lsx.set_cover_template_header_height = function () {
 		var mastheadHeight = 0;
 		if (
 			$("body").hasClass("page-template-template-cover") ||
@@ -290,11 +274,11 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.set_search_form_effect_mobile = function() {
+	lsx.set_search_form_effect_mobile = function () {
 		$document.on(
 			"click",
 			"header.navbar #searchform button.search-submit",
-			function(e) {
+			function (e) {
 				if (windowWidth < 1200) {
 					e.preventDefault();
 					var form = $(this).closest("form");
@@ -312,7 +296,7 @@ var lsx = Object.create(null);
 		$document.on(
 			"blur",
 			"header.navbar #searchform .search-field",
-			function(e) {
+			function (e) {
 				if (windowWidth < 1200) {
 					var form = $(this).closest("form");
 					form.removeClass("hover");
@@ -327,14 +311,9 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.search_form_prevent_empty_submissions = function() {
-		$document.on("submit", "#searchform", function(e) {
-			if (
-				"" ===
-				$(this)
-					.find('input[name="s"]')
-					.val()
-			) {
+	lsx.search_form_prevent_empty_submissions = function () {
+		$document.on("submit", "#searchform", function (e) {
+			if ("" === $(this).find('input[name="s"]').val()) {
 				e.preventDefault();
 			}
 		});
@@ -342,7 +321,7 @@ var lsx = Object.create(null);
 		$document.on(
 			"blur",
 			"header.navbar #searchform .search-field",
-			function(e) {
+			function (e) {
 				if (windowWidth < 1200) {
 					var form = $(this).closest("form");
 					form.removeClass("hover");
@@ -357,13 +336,11 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.build_slider_lightbox = function() {
+	lsx.build_slider_lightbox = function () {
 		$("body:not(.single-tour-operator) .gallery").slickLightbox({
-			caption: function(element, info) {
-				return $(element)
-					.find("img")
-					.attr("alt");
-			}
+			caption: function (element, info) {
+				return $(element).find("img").attr("alt");
+			},
 		});
 	};
 
@@ -373,10 +350,10 @@ var lsx = Object.create(null);
 	 * @package	lsx
 	 * @subpackage scripts
 	 */
-	lsx.init_wc_slider = function() {
+	lsx.init_wc_slider = function () {
 		var $wcSlider = $(".lsx-woocommerce-slider");
 
-		$wcSlider.each(function(index, el) {
+		$wcSlider.each(function (index, el) {
 			var $self = $(this),
 				_slidesToShow = 4,
 				_slidesToScroll = 4,
@@ -399,7 +376,7 @@ var lsx = Object.create(null);
 				_slidesToScroll_992 = 1;
 			}
 
-			$self.on("init", function(event, slick) {
+			$self.on("init", function (event, slick) {
 				if (
 					slick.options.arrows &&
 					slick.slideCount > slick.options.slidesToShow
@@ -408,7 +385,7 @@ var lsx = Object.create(null);
 				}
 			});
 
-			$self.on("setPosition", function(event, slick) {
+			$self.on("setPosition", function (event, slick) {
 				if (!slick.options.arrows) {
 					$self.removeClass("slick-has-arrows");
 				} else if (slick.slideCount > slick.options.slidesToShow) {
@@ -432,8 +409,8 @@ var lsx = Object.create(null);
 							slidesToScroll: _slidesToScroll_992,
 							draggable: true,
 							arrows: false,
-							swipe: true
-						}
+							swipe: true,
+						},
 					},
 					{
 						breakpoint: 768,
@@ -442,21 +419,23 @@ var lsx = Object.create(null);
 							slidesToScroll: _slidesToScroll_768,
 							draggable: true,
 							arrows: false,
-							swipe: true
-						}
-					}
-				]
+							swipe: true,
+						},
+					},
+				],
 			});
 		});
 
 		if ($('a[href="#tab-bundled_products"]').length > 0) {
-			$document.on("click", 'a[href="#tab-bundled_products"]', function(
-				e
-			) {
-				$("#tab-bundled_products .lsx-woocommerce-slider").slick(
-					"setPosition"
-				);
-			});
+			$document.on(
+				"click",
+				'a[href="#tab-bundled_products"]',
+				function (e) {
+					$("#tab-bundled_products .lsx-woocommerce-slider").slick(
+						"setPosition"
+					);
+				}
+			);
 		}
 	};
 
@@ -466,8 +445,8 @@ var lsx = Object.create(null);
 	 * @package	lsx
 	 * @subpackage scripts
 	 */
-	lsx.remove_gallery_img_width_height = function() {
-		$(".gallery-size-full img").each(function() {
+	lsx.remove_gallery_img_width_height = function () {
+		$(".gallery-size-full img").each(function () {
 			var $self = $(this);
 
 			$self.removeAttr("height");
@@ -481,7 +460,7 @@ var lsx = Object.create(null);
 	 * @package	lsx
 	 * @subpackage scripts
 	 */
-	lsx.do_scroll = function(_$el) {
+	lsx.do_scroll = function (_$el) {
 		var _href = _$el.href.replace(/^[^#]*(#.+$)/gi, "$1"),
 			_$to = $(_href),
 			_top = parseInt(_$to.offset().top),
@@ -489,7 +468,7 @@ var lsx = Object.create(null);
 
 		$("html, body").animate(
 			{
-				scrollTop: _top + _extra
+				scrollTop: _top + _extra,
 			},
 			800
 		);
@@ -502,10 +481,10 @@ var lsx = Object.create(null);
 	 * @package	lsx
 	 * @subpackage scripts
 	 */
-	lsx.fix_wc_elements = function(_$el) {
+	lsx.fix_wc_elements = function (_$el) {
 		$(
 			".woocommerce-MyAccount-content .api-manager-changelog, .woocommerce-MyAccount-content .api-manager-download"
-		).each(function() {
+		).each(function () {
 			var $this = $(this);
 
 			$this.children("br:first-child").remove();
@@ -519,7 +498,7 @@ var lsx = Object.create(null);
 			"checkbox"
 		);
 
-		$(document.body).on("updated_checkout", function() {
+		$(document.body).on("updated_checkout", function () {
 			$(".woocommerce-form__label-for-checkbox.checkbox").removeClass(
 				"checkbox"
 			);
@@ -532,8 +511,8 @@ var lsx = Object.create(null);
 	 * @package	lsx
 	 * @subpackage scripts
 	 */
-	lsx.fix_caldera_form_modal_title = function() {
-		$("[data-remodal-id]").each(function() {
+	lsx.fix_caldera_form_modal_title = function () {
+		$("[data-remodal-id]").each(function () {
 			var $form = $(this),
 				$button = $('[data-remodal-target="' + $form.attr("id") + '"]'),
 				title = $button.text();
@@ -552,8 +531,8 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.wc_footer_bar_toggle_handler = function() {
-		$(".lsx-wc-footer-bar-link-toogle").on("click", function(event) {
+	lsx.wc_footer_bar_toggle_handler = function () {
+		$(".lsx-wc-footer-bar-link-toogle").on("click", function (event) {
 			event.preventDefault();
 			$(".lsx-wc-footer-bar-form").slideToggle();
 			$(".lsx-wc-footer-bar").toggleClass("lsx-wc-footer-bar-search-on");
@@ -567,7 +546,7 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.wc_fix_messages_visual = function() {
+	lsx.wc_fix_messages_visual = function () {
 		$(
 			".woocommerce-message," +
 				".woocommerce-info:not(.wc_points_redeem_earn_points, .wc_points_rewards_earn_points)," +
@@ -580,7 +559,7 @@ var lsx = Object.create(null);
 				"p.no-comments," +
 				".stock," +
 				".woocommerce-password-strength"
-		).each(function() {
+		).each(function () {
 			var _$this = $(this);
 
 			if (0 === _$this.find(".button").length) {
@@ -602,7 +581,7 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.wc_fix_subscribe_to_replies_checkbox = function() {
+	lsx.wc_fix_subscribe_to_replies_checkbox = function () {
 		$('input[name="subscribe_to_replies"]').removeClass("form-control");
 	};
 
@@ -613,8 +592,8 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.wc_add_quick_view_close_button = function() {
-		$("body").on("quick-view-displayed", function(event) {
+	lsx.wc_add_quick_view_close_button = function () {
+		$("body").on("quick-view-displayed", function (event) {
 			if (0 === $(".pp_content_container").children(".close").length) {
 				$(".pp_content_container").prepend(
 					'<button type="button" class="close">&times;</button>'
@@ -622,7 +601,7 @@ var lsx = Object.create(null);
 			}
 		});
 
-		$document.on("click", ".pp_content_container .close", function(e) {
+		$document.on("click", ".pp_content_container .close", function (e) {
 			$.prettyPhoto.close();
 		});
 	};
@@ -634,7 +613,7 @@ var lsx = Object.create(null);
 	 * @subpackage scripts
 	 */
 
-	lsx.wc_fix_subscriptions_empty_message = function() {
+	lsx.wc_fix_subscriptions_empty_message = function () {
 		if ("" === $(".first-payment-date").text()) {
 			$(".first-payment-date").remove();
 		}
@@ -646,17 +625,17 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	lsx.sensei_courses_empty_thumbnail = function() {
-		$(".course-thumbnail").each(function() {
+	lsx.sensei_courses_empty_thumbnail = function () {
+		$(".course-thumbnail").each(function () {
 			if (!$.trim($(this).html()).length) {
 				$(this).addClass("course-thumbnail-empty");
 			}
 		});
 	};
 
-	lsx.sensei_course_participants_widget_more = function() {
+	lsx.sensei_course_participants_widget_more = function () {
 		if ($("body").hasClass("sensei")) {
-			$(".sensei-course-participant").each(function() {
+			$(".sensei-course-participant").each(function () {
 				if ($(this).hasClass("show")) {
 					$(this).addClass("sensei-show");
 					$(this).removeClass("show");
@@ -666,13 +645,13 @@ var lsx = Object.create(null);
 					$(this).removeClass("hide");
 				}
 			});
-			$(".sensei-view-all-participants a").on("click", function() {
+			$(".sensei-view-all-participants a").on("click", function () {
 				if ($(this).hasClass("clicked")) {
 					$(this).removeClass("clicked");
 				} else {
 					$(this).addClass("clicked");
 				}
-				$(".sensei-course-participant.sensei-hide").each(function() {
+				$(".sensei-course-participant.sensei-hide").each(function () {
 					if ($(this).hasClass("sensei-clicked")) {
 						$(this).removeClass("sensei-clicked");
 					} else {
@@ -683,42 +662,42 @@ var lsx = Object.create(null);
 		}
 	};
 
-	lsx.detect_has_link_block = function() {
-		$(".has-link-color").each(function() {
+	lsx.detect_has_link_block = function () {
+		$(".has-link-color").each(function () {
 			$(this)
 				.find("a")
-				.each(function() {
+				.each(function () {
 					$(this).addClass("has-link-anchor");
 				});
 		});
 	};
 
 	//Toggle for woocommerce block filters.
-	lsx.woocommerce_filters_mobile = function() {
+	lsx.woocommerce_filters_mobile = function () {
 		if ($("body").hasClass("woocommerce-js")) {
-			$(".lsx-wc-filter-toggle").on("click", function() {
+			$(".lsx-wc-filter-toggle").on("click", function () {
 				$(this).toggleClass("lsx-wc-filter-toggle-open");
 
 				if ($(this).hasClass("lsx-wc-filter-toggle-open")) {
 					$(
 						'.lsx-wc-filter-block div[class^="wp-block-woocommerce-"][class$="-filter"]'
-					).each(function() {
+					).each(function () {
 						$(this).attr("id", "lsx-wc-filter-child-open");
 					});
 					$(
 						".lsx-wc-filter-block .wp-block-woocommerce-product-search"
-					).each(function() {
+					).each(function () {
 						$(this).attr("id", "lsx-wc-filter-child-open");
 					});
 				} else {
 					$(
 						'.lsx-wc-filter-block div[class^="wp-block-woocommerce-"][class$="-filter"]'
-					).each(function() {
+					).each(function () {
 						$(this).attr("id", "lsx-wc-filter-child-close");
 					});
 					$(
 						".lsx-wc-filter-block .wp-block-woocommerce-product-search"
-					).each(function() {
+					).each(function () {
 						$(this).attr("id", "lsx-wc-filter-child-close");
 					});
 				}
@@ -732,7 +711,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	$window.resize(function() {
+	$window.resize(function () {
 		windowHeight =
 			window.innerHeight ||
 			document.documentElement.clientHeight ||
@@ -749,7 +728,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	$document.ready(function() {
+	$document.ready(function () {
 		lsx.navbar_toggle_handler();
 
 		// lsx.fix_bootstrap_menus_touchstart();
@@ -783,7 +762,7 @@ var lsx = Object.create(null);
 	 * @package    lsx
 	 * @subpackage scripts
 	 */
-	$(window).on('load', function () {
+	$(window).on("load", function () {
 		lsx.fix_bootstrap_menus_dropdown();
 		lsx.fix_bootstrap_menus_dropdown_click();
 		lsx.fix_lazyload_envira_gallery();
@@ -796,3 +775,22 @@ var lsx = Object.create(null);
 		$("body.preloader-content-enable").addClass("html-loaded");
 	});
 })(jQuery, window, document);
+
+jQuery.event.special.touchstart = {
+	setup: function (_, ns, handle) {
+		if (ns.includes("noPreventDefault")) {
+			this.addEventListener("touchstart", handle, { passive: false });
+		} else {
+			this.addEventListener("touchstart", handle, { passive: true });
+		}
+	},
+};
+jQuery.event.special.touchmove = {
+	setup: function (_, ns, handle) {
+		if (ns.includes("noPreventDefault")) {
+			this.addEventListener("touchmove", handle, { passive: false });
+		} else {
+			this.addEventListener("touchmove", handle, { passive: true });
+		}
+	},
+};
